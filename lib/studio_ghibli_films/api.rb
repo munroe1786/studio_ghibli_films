@@ -1,4 +1,9 @@
+puts "Hello from StudioGhibliFilms::API"
+module StudioGhibliFilms
+  class API
+
+  end
+end
 
 
 
-#new info here for practice committing

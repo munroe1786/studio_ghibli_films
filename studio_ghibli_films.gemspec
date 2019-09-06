@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["era3munroe@gmail.com"]
 
   spec.summary       = %q{Provides information about Ghibli films.}
-  spec.description   = %q{This CLI project allows the user to explore learn about Studio Ghibli films.}
+  spec.description   = %q{This CLI project allows the user to learn about Studio Ghibli films.}
   spec.homepage      = "https://github.com/munroe1786/studio_ghibli_films"
   spec.license       = "MIT"
 
