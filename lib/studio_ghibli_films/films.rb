@@ -1,4 +1,4 @@
-puts "Hello from StudioGhibliFilms::Films"
+#puts "Hello from StudioGhibliFilms::Films"
 module StudioGhibliFilms
   class Films 
   

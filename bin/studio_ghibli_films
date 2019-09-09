@@ -2,3 +2,5 @@
 require "bundler"
 require "bundler/setup"
 require_relative "../lib/studio_ghibli_films"
+
+StudioGhibliFilms::CLI.new.start
