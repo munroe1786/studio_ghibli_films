@@ -5,6 +5,7 @@ module StudioGhibliFilms
         puts "Hi there! Welcome to the Studio Ghibli CLI."
         @input = nil
         menu
+        list_films
         while @input != "exit" && @input != "quit"
           @input = gets.chomp
             if @input == "menu"

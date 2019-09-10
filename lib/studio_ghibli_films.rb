@@ -5,7 +5,7 @@ require_relative "studio_ghibli_films/films"
 
 module StudioGhibliFilms
   class Error < StandardError; end
-  # Your code goes here...
+  
 end
 
 
