@@ -45,12 +45,5 @@ module StudioGhibliFilms
           puts "Not sure what you mean.  Please type 'list' for list of shows or 'exit', 'quit' or 'back'."
         end
       end
-
-
-
-
-
-  
-
-      end
+    end
 end

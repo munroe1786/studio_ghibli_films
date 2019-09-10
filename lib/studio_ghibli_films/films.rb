@@ -1,15 +1,25 @@
 module StudioGhibliFilms
   class Films 
-    attr_accessor :title, :description, :director, :species, :release_year, :rotten_tomatoes_score
+    attr_accessor :title, :description, :director, :release_year, :rotten_tomatoes_score
 
     @@all = [ ]
 
-    def initialize
-    
+    def self.all
+      @@all ||= self.load
     end
 
-    def self.all
-      @@all 
+    def self.load
+      API.list_films.collect do |show_hash|
+        Films.new(show_hash)
+      end
+    end
+
+    def initialize(attributes = {})
+      @title = attributes["title"]
+      @description = attributes["description"]
+      @director = attributes["director"]
+      @release_year = attributes["release_year"]
+      @rotten_tomatoes_score = attributes["rotten_tomatoes_score"]
     end
   
   end
