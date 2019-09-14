@@ -20,7 +20,5 @@ module StudioGhibliFilms
       @release_date = attributes["release_date"]
       @rt_score = attributes["rt_score"]
     end
-  
   end
-
 end
