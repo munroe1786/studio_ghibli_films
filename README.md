@@ -1,8 +1,9 @@
 # StudioGhibliFilms
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/studio_ghibli_films`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem accesses the Studio Ghibli public API.  The user can look at a list of the films and select one to see its description.
+The user can also see the director, producer and release date of a film of their choice.  Lastly, the user is able to see a list
+of all the films and their Rotten Tomatoes ranking.  
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -22,7 +23,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the below and follow the on screen prompts.
+
+$ studio_ghibli_films
 
 ## Development
 

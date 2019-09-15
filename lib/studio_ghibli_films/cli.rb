@@ -1,8 +1,9 @@
+require 'colorize'
 module StudioGhibliFilms
   class CLI
       def start
         puts ""
-        puts "Hi there! Welcome to the Studio Ghibli CLI."
+        puts "Hi there! Welcome to the Studio Ghibli CLI.".colorize(:cyan).underline.bold
         puts ""
         @input = nil
         menu
@@ -25,10 +26,10 @@ module StudioGhibliFilms
               list_of_films
               film_director_producer_and_release_date
             elsif @input == "exit" || @input == "quit"
-              puts "Thanks for stopping by!"
+              puts "Thanks for stopping by!".colorize(:cyan).bold
               exit
              else
-              puts "Oops, didn't catch that! Please type '1' for the list of films, '2' for film info or 'exit'."
+              puts "Oops, didn't catch that! Please type '1' for the list of films, '2' for film info or 'exit'.".colorize(:magenta)
             end
         end
       end
@@ -53,9 +54,9 @@ module StudioGhibliFilms
             index = @input.to_i - 1
             if index.between?(0,19)
               puts ""
-              puts Film.all[index].title
+              puts Film.all[index].title.colorize(:green).underline.bold
               puts ""
-              puts Film.all[index].description
+              puts Film.all[index].description.colorize(:blue)
               puts ""
               puts "Which film would you like to know more about? (type 'list' to see the list again)."
               puts ""
@@ -67,10 +68,10 @@ module StudioGhibliFilms
               puts ""
               puts "Please enter the number of a film to read its description."
             elsif @input == "exit" || @input == "quit"
-              puts "Thanks for stopping by!"
+              puts "Thanks for stopping by!".colorize(:cyan)
               exit
             else
-              puts "Oops! Please type a film number, 'list', 'menu' or 'exit'."
+              puts "Oops! Please type a film number, 'list', 'menu' or 'exit'.".colorize(:magenta)
           end
         end
       end
@@ -83,19 +84,21 @@ module StudioGhibliFilms
           index = @input.to_i - 1
           if index.between?(0,19)
             puts ""
-            puts Film.all[index].title
+            puts Film.all[index].title.colorize(:green).underline
             puts ""
-            puts "Director: #{Film.all[index].director}"
+            puts "  Director: #{Film.all[index].director}".colorize(:blue)
             puts ""
-            puts "Producer: #{Film.all[index].producer}"
+            puts "  Producer: #{Film.all[index].producer}".colorize(:blue)
             puts ""
-            puts "Release Date: #{Film.all[index].release_date}"
+            puts "  Release Date: #{Film.all[index].release_date}".colorize(:blue)
             puts ""
             puts "Which film would you like to know more about? (type 'list', 'menu' or 'exit'."
             puts ""
-            puts "Or would you like to see the Rotten Tomatoes scores for these films?  Press 'Y' to see the scores or 'N' to return to the menu."
+            puts "Or would you like to see the Rotten Tomatoes scores for these films?  Press 'Y' to see the scores or 'N' to return to the menu.".colorize(:cyan)
           elsif @input == "list"
-            list_of_films  
+            list_of_films
+            puts ""
+            puts "Please select a film number to see the director, producer and release date."  
           elsif @input == "menu" || @input.downcase == "n"
             menu
           elsif @input.downcase == "y"
@@ -103,10 +106,10 @@ module StudioGhibliFilms
             puts ""
             puts "Type 'list' or 'menu' to go back or 'exit' to leave the program."
           elsif @input == "exit" || @input == "quit"
-            puts "Thanks for stopping by!"
+            puts "Thanks for stopping by!".colorize(:cyan)
             exit 
           else
-            puts "Oops! Please type a film number, 'list', 'menu' or 'exit'."
+            puts "Oops! Please type a film number, 'list', 'menu' or 'exit'.".colorize(:magenta)
           end  
         end  
       end

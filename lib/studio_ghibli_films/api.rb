@@ -4,7 +4,6 @@ require 'pry'
 
 module StudioGhibliFilms
   class API
-    #binding.pry
     def self.list_films
       doc = open('https://ghibliapi.herokuapp.com/films').read
       info = JSON.parse(doc)
