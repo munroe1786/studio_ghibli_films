@@ -3,7 +3,7 @@ module StudioGhibliFilms
   class CLI
       def start
         puts ""
-        puts "Hi there! Welcome to the Studio Ghibli CLI.".colorize(:cyan).underline.bold
+        puts "Hi there! Welcome to the Studio Ghibli CLI.".colorize(:cyan).bold
         puts ""
         @input = nil
         menu
@@ -11,8 +11,12 @@ module StudioGhibliFilms
 
       def menu
         puts <<~MENU
-          1. See list of films and their descriptions. 
-          2. See the director, producer and release date of films.
+          Menu
+
+          1. See the list of Studio Ghibli films and read the descriptions. 
+
+          2. See more information about the films.
+
           Type 'exit' or 'quit' any time to leave the program.
         MENU
         while @input != "exit" && @input != "quit"
@@ -20,6 +24,7 @@ module StudioGhibliFilms
             if @input == "menu"
               menu
             elsif @input == "1" || @input == "list"
+              puts ""
               list_of_films
               film_description
             elsif @input == "2"
@@ -29,7 +34,7 @@ module StudioGhibliFilms
               puts "Thanks for stopping by!".colorize(:cyan).bold
               exit
              else
-              puts "Oops, didn't catch that! Please type '1' for the list of films, '2' for film info or 'exit'.".colorize(:magenta)
+              puts "Oops, didn't catch that! Please type '1' for the list of films, '2' for film info or 'exit'.".colorize(:magenta).bold
             end
         end
       end
@@ -48,17 +53,17 @@ module StudioGhibliFilms
 
       def film_description
         puts ""
-        puts "Please enter the number of a film to read its description."
+        puts "Please type a film number to read the description.".colorize(:light_blue).bold
         while @input != "exit" && @input != "quit" 
             @input = gets.strip
             index = @input.to_i - 1
             if index.between?(0,19)
               puts ""
-              puts Film.all[index].title.colorize(:green).underline.bold
+              puts Film.all[index].title.colorize(:green).bold
               puts ""
               puts Film.all[index].description.colorize(:blue)
               puts ""
-              puts "Which film would you like to know more about? (type 'list' to see the list again)."
+              puts "Please type a film number to read the description or 'list' to see the list again.".colorize(:cyan)
               puts ""
               puts "Type 'menu' to return to the main menu or 'exit' to quit."
             elsif @input == "menu"
@@ -66,50 +71,50 @@ module StudioGhibliFilms
             elsif @input == "list"
               list_of_films
               puts ""
-              puts "Please enter the number of a film to read its description."
+              puts "Please type a film number to read the description.".colorize(:light_blue).bold
             elsif @input == "exit" || @input == "quit"
-              puts "Thanks for stopping by!".colorize(:cyan)
+              puts "Thanks for stopping by!".colorize(:cyan).bold
               exit
             else
-              puts "Oops! Please type a film number, 'list', 'menu' or 'exit'.".colorize(:magenta)
+              puts "Oops! Please type a film number, 'list', 'menu' or 'exit'.".colorize(:magenta).bold
           end
         end
       end
 
       def film_director_producer_and_release_date
         puts ""
-        puts "Please select a film number to see the director, producer and release date."
+        puts "Please type a film number to see the director, producer and release date.".colorize(:blue).bold
         while @input != "exit" && @input != "quit"
           @input = gets.strip
           index = @input.to_i - 1
           if index.between?(0,19)
             puts ""
-            puts Film.all[index].title.colorize(:green).underline
+            puts Film.all[index].title.colorize(:green).bold
             puts ""
-            puts "  Director: #{Film.all[index].director}".colorize(:blue)
+            puts "  Director: #{Film.all[index].director}".colorize(:light_blue)
             puts ""
-            puts "  Producer: #{Film.all[index].producer}".colorize(:blue)
+            puts "  Producer: #{Film.all[index].producer}".colorize(:light_blue)
             puts ""
-            puts "  Release Date: #{Film.all[index].release_date}".colorize(:blue)
+            puts "  Release Date: #{Film.all[index].release_date}".colorize(:light_blue)
             puts ""
-            puts "Which film would you like to know more about? (type 'list', 'menu' or 'exit'."
+            puts "Please type a film number or 'list', 'menu' or 'exit'."
             puts ""
-            puts "Or would you like to see the Rotten Tomatoes scores for these films?  Press 'Y' to see the scores or 'N' to return to the menu.".colorize(:cyan)
+            puts "Or would you like to see the Rotten Tomatoes scores for these films?  Type 'Y' to see the scores or 'N' to return to the menu.".colorize(:cyan).bold
           elsif @input == "list"
             list_of_films
             puts ""
-            puts "Please select a film number to see the director, producer and release date."  
+            puts "Please type a film number to see the director, producer and release date.".colorize(:blue).bold
           elsif @input == "menu" || @input.downcase == "n"
             menu
           elsif @input.downcase == "y"
             rt_scores
             puts ""
-            puts "Type 'list' or 'menu' to go back or 'exit' to leave the program."
+            puts "Type 'list' or 'menu' to go back or 'exit'".colorize(:blue).bold
           elsif @input == "exit" || @input == "quit"
-            puts "Thanks for stopping by!".colorize(:cyan)
+            puts "Thanks for stopping by!".colorize(:cyan).bold
             exit 
           else
-            puts "Oops! Please type a film number, 'list', 'menu' or 'exit'.".colorize(:magenta)
+            puts "Oops! Please type a film number, 'list', 'menu' or 'exit'.".colorize(:magenta).bold
           end  
         end  
       end
