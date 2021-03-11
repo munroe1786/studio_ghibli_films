@@ -117,4 +117,3 @@ module StudioGhibliFilms
         end  
       end
     end 
-end
