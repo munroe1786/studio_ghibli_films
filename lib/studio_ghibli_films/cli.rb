@@ -1,3 +1,4 @@
+require 'pry'
 require 'colorize'
 module StudioGhibliFilms
   class CLI
@@ -21,20 +22,15 @@ module StudioGhibliFilms
         MENU
         while @input != "exit" && @input != "quit"
           @input = gets.strip
-            if @input == "menu"
-              menu
-            elsif @input == "1" || @input == "list"
+            if @input == "1" 
               puts ""
               list_of_films
               film_description
             elsif @input == "2"
               list_of_films
               film_director_producer_and_release_date
-            elsif @input == "exit" || @input == "quit"
-              puts "Thanks for stopping by!".colorize(:cyan).bold
-              exit
-             else
-              puts "Oops, didn't catch that! Please type '1' for the list of films, '2' for film info or 'exit'.".colorize(:magenta).bold
+            else
+              user_options
             end
         end
       end
@@ -51,6 +47,21 @@ module StudioGhibliFilms
         end
       end  
 
+      def user_options
+        if @input == "menu" || @input.downcase == "n"
+          menu
+        elsif @input == "list"
+          list_of_films
+          puts ""
+          puts "Please type a film number to read the description.".colorize(:light_blue).bold
+        elsif @input == "exit" || @input == "quit"
+          puts "Thanks for stopping by!".colorize(:cyan).bold
+          exit
+        else
+          puts "Oops! Please type a film number, 'list', 'menu' or 'exit'.".colorize(:magenta).bold
+        end
+      end
+
       def film_description
         puts ""
         puts "Please type a film number to read the description.".colorize(:light_blue).bold
@@ -66,17 +77,9 @@ module StudioGhibliFilms
               puts "Please type a film number to read the description or 'list' to see the list again.".colorize(:cyan)
               puts ""
               puts "Type 'menu' to return to the main menu or 'exit' to quit."
-            elsif @input == "menu"
-              menu
-            elsif @input == "list"
-              list_of_films
-              puts ""
-              puts "Please type a film number to read the description.".colorize(:light_blue).bold
-            elsif @input == "exit" || @input == "quit"
-              puts "Thanks for stopping by!".colorize(:cyan).bold
-              exit
             else
-              puts "Oops! Please type a film number, 'list', 'menu' or 'exit'.".colorize(:magenta).bold
+              user_options
+            end
           end
         end
       end
@@ -104,17 +107,12 @@ module StudioGhibliFilms
             list_of_films
             puts ""
             puts "Please type a film number to see the director, producer and release date.".colorize(:blue).bold
-          elsif @input == "menu" || @input.downcase == "n"
-            menu
           elsif @input.downcase == "y"
             rt_scores
             puts ""
             puts "Type 'list' or 'menu' to go back or 'exit'".colorize(:blue).bold
-          elsif @input == "exit" || @input == "quit"
-            puts "Thanks for stopping by!".colorize(:cyan).bold
-            exit 
           else
-            puts "Oops! Please type a film number, 'list', 'menu' or 'exit'.".colorize(:magenta).bold
+            user_options
           end  
         end  
       end
