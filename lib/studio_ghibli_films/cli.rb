@@ -36,6 +36,7 @@ module StudioGhibliFilms
       end
   
       def list_of_films
+        binding.pry
         Film.all.each.with_index(1) do |movie, index|
           puts "#{index}. #{movie.title}"
         end
